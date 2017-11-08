@@ -1,0 +1,91 @@
+-- vim: ts=4 sw=4 noet ai cindent syntax=lua
+--[[
+Conky, a system monitor, based on torsmo
+
+Any original torsmo code is licensed under the BSD license
+
+All code written since the fork of torsmo is licensed under the GPL
+
+Please see COPYING for details
+
+Copyright (c) 2004, Hannu Saransaari and Lauri Hakkarainen
+Copyright (c) 2005-2012 Brenden Matthews, Philip Kovacs, et. al. (see AUTHORS)
+All rights reserved.
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+]]
+
+conky.config = {
+	double_buffer = true,
+    background = true,
+    border_width = 1,
+    cpu_avg_samples = 2,
+	default_color = '#f44c4c',
+    default_outline_color = 'white',
+    default_shade_color = 'white',
+    draw_borders = false,
+    draw_graph_borders = true,
+    draw_outline = false,
+    draw_shades = true,
+    use_xft = true,
+    font = 'Inconsolata:size=14',
+    minimum_height = 5,
+	minimum_width = 600,
+    net_avg_samples = 2,
+    extra_newline = false,
+
+	alignment = 'middle_middle',
+    own_window = true,
+    own_window_type = 'override',
+	own_window_transparent = false,
+	own_window_argb_visual = true,
+	own_window_argb_value = 90,
+	own_window_color = '#000000',
+
+    stippled_borders = 0,
+    update_interval = 1.0,
+}
+
+conky.text = [[
+$alignc${color grey}${font Inconsolata:size=70:bold}${time %H:%M:%S}${font}${color}$alignc
+${voffset 3}
+$alignc${color grey}${font Inconsolata:size=20}${execi 60 ~/scripts/weather.sh}${font}${color}$alignc
+${voffset 3}
+$alignc${font Inconsolata:size=20:bold}${execpi 5 ~/scripts/vpn_status.sh} ${execpi 5 ~/scripts/bluetooth_status.sh}${font}$alignc
+${voffset 7}
+
+${font Inconsolata:size=16:bold}MISC$font ${hr 2}
+${color grey}Uptime:   $color $uptime
+${color grey}Frequency:$color $freq_g GHz
+${color grey}RAM Usage:$color $mem/$memmax - $memperc% ${membar 4}
+${color grey}CPU Usage:$color $cpu% ${cpubar 4}
+${voffset 3}
+
+${font Inconsolata:size=16:bold}FILE SYSTEMS$font ${hr 2}
+${color grey}/     $color${fs_used /}/${fs_size /} ${fs_bar 6 /}
+${color grey}/home $color${fs_used /home}/${fs_size /home} ${fs_bar 6 /home}
+${voffset 3}
+
+${font Inconsolata:size=16:bold}NETWORK$font ${hr 2}
+${color grey}wlan Up:$color ${upspeed wlp3s0} ${color grey} - Down:$color ${downspeed wlp3s0}
+$alignc${font :size=25}↑${upspeedgraph wlp3s0 30,200 333333 FF0000 -l}↓${downspeedgraph wlp3s0 30,200 333333 FF0000 -l}$font$alignc
+${color grey}eth  Up:$color ${upspeed enp0s31f6} ${color grey} - Down:$color ${downspeed enp0s31f6}
+$alignc${font :size=25}↑${upspeedgraph enp0s31f6 30,200 333333 FF0000 -l}↓${downspeedgraph enp0s31f6 30,200 333333 FF0000 -l}$font$alignc
+${voffset 3}
+
+${font Inconsolata:size=16:bold}POWER$font ${hr 2}
+${color grey}Battery 1:$color		${execbar 10 ~/scripts/battery.sh 2 1}
+${color grey}Battery 2:$color		${execbar 10 ~/scripts/battery.sh 2 1}
+${color grey}Adapter  :$color 		${execi 10 ~/scripts/battery.sh 2 3}
+${color grey}Estimated time:$color	   ${execi 10 ~/scripts/battery.sh 1}
+]]
