@@ -85,7 +85,7 @@ ${voffset 3}
 
 ${font Inconsolata:size=16:bold}POWER$font ${hr 2}
 ${color grey}Battery 1:$color		${execbar 10 ~/scripts/battery.sh 2 1}
-${color grey}Battery 2:$color		${execbar 10 ~/scripts/battery.sh 2 1}
+${color grey}Battery 2:$color		${execbar 10 ~/scripts/battery.sh 2 2}
 ${color grey}Adapter  :$color 		${execi 10 ~/scripts/battery.sh 2 3}
 ${color grey}Estimated time:$color	   ${execi 10 ~/scripts/battery.sh 1}
 ]]
