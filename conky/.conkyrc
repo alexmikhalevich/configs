@@ -59,7 +59,7 @@ conky.config = {
 conky.text = [[
 $alignc${color grey}${font Inconsolata:size=70:bold}${time %H:%M:%S}${font}${color}$alignc
 ${voffset 3}
-$alignc${color grey}${font Inconsolata:size=20}${execi 60 ~/scripts/weather.sh}${font}${color}$alignc
+$alignc${color grey}${font Inconsolata:size=20}${execi 3600 ~/scripts/weather.sh}${font}${color}$alignc
 ${voffset 3}
 $alignc${font Inconsolata:size=20:bold}${execpi 5 ~/scripts/vpn_status.sh} ${execpi 5 ~/scripts/bluetooth_status.sh}${font}$alignc
 ${voffset 7}
