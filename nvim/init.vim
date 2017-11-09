@@ -2,7 +2,6 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'Valloric/YouCompleteMe'
 Plug 'scrooloose/nerdtree'
 Plug 'octol/vim-cpp-enhanced-highlight'
-Plug 'ajmwagar/vim-deus'
 call plug#end()
 
 set relativenumber
@@ -10,8 +9,7 @@ set tabstop=4
 set softtabstop=0 noexpandtab
 set shiftwidth=4
 
-set background=dark " Setting dark mode
-colorscheme deus
+colorscheme desert
 
 let g:ycm_server_python_interpreter='/usr/bin/python2.7'
 let g:ycm_global_ycm_extra_conf = '~/.config/.ycm_extra_conf.py'
@@ -29,6 +27,8 @@ let g:cpp_class_decl_highlight = 1
 let g:cpp_experimental_simple_template_highlight = 1
 
 map <C-n> :NERDTreeToggle<CR>
+map zt :tabnew<CR>
+map zw :tabclose<CR>
 nnoremap <C-d> :YcmCompleter GoToDefinition<CR>
 nnoremap <C-g> :YcmCompleter GoTo<CR>
 nnoremap <C-c> :YcmCompleter GoToDeclaration<CR>
