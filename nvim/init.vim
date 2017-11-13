@@ -5,6 +5,7 @@ Plug 'octol/vim-cpp-enhanced-highlight'
 call plug#end()
 
 set relativenumber
+set nu
 set tabstop=4
 set softtabstop=0 noexpandtab
 set shiftwidth=4
