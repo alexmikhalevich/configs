@@ -59,9 +59,9 @@ conky.config = {
 conky.text = [[
 $alignc${color grey}${font Inconsolata:size=70:bold}${time %H:%M:%S}${font}${color}$alignc
 ${voffset 3}
-$alignc${color grey}${font Inconsolata:size=20}${execi 3600 ~/scripts/weather.sh}${font}${color}$alignc
+$alignc${color grey}${font Inconsolata:size=20}${execi 60 ~/scripts/weather.sh}${font}${color}$alignc
 ${voffset 3}
-$alignc${font Inconsolata:size=20:bold}${execpi 5 ~/scripts/vpn_status.sh} ${execpi 5 ~/scripts/bluetooth_status.sh}${font}$alignc
+$alignc${font Inconsolata:size=20:bold}${execpi 5 ~/scripts/vpn_status.sh} ${execpi 5 ~/scripts/bluetooth_status.sh} ${execpi 5 ~/scripts/wwan_status.sh}${font}$alignc
 ${voffset 7}
 
 ${font Inconsolata:size=16:bold}MISC$font ${hr 2}
@@ -81,6 +81,8 @@ ${color grey}wlan Up:$color ${upspeed wlp3s0} ${color grey} - Down:$color ${down
 $alignc${font :size=25}↑${upspeedgraph wlp3s0 30,200 333333 FF0000 -l}↓${downspeedgraph wlp3s0 30,200 333333 FF0000 -l}$font$alignc
 ${color grey}eth  Up:$color ${upspeed enp0s31f6} ${color grey} - Down:$color ${downspeed enp0s31f6}
 $alignc${font :size=25}↑${upspeedgraph enp0s31f6 30,200 333333 FF0000 -l}↓${downspeedgraph enp0s31f6 30,200 333333 FF0000 -l}$font$alignc
+${color grey}wwan Up:$color ${upspeed wwp0s20f0u3} ${color grey} - Down:$color ${downspeed wwp0s20f0u3}
+$alignc${font :size=25}↑${upspeedgraph wwp0s20f0u3 30,200 333333 FF0000 -l}↓${downspeedgraph wwp0s20f0u3 30,200 333333 FF0000 -l}$font$alignc
 ${voffset 3}
 
 ${font Inconsolata:size=16:bold}POWER$font ${hr 2}
